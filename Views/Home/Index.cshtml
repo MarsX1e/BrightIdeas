@@ -1,0 +1,28 @@
+@{
+    ViewData["Title"] = "Home Page";
+}
+@model BrightIdeas.Models.UserValidateModel
+<h1>Welcome!</h1>
+<div id="Register">
+    <h1>Register</h1>
+    <div asp-validation-summary="All"></div>
+    <p>@ViewBag.error</p>
+    <form asp-controller="Home" method="post" asp-action="Register">
+        <p>Name: <input asp-for="Name" type="text"></p>
+        <p>Alias: <input asp-for="Alias" type="text"></p>
+        <p>Email: <input asp-for="Email" type="text"></p>
+        <p>Password: <input asp-for="Password" type="text"></p>
+        <p>Password should be at least 8 characters</p>
+        <p>Confirm PW: <input asp-for="cp" type="text"></p>
+        <p><input type="submit" value="Register"></p>
+    </form>
+</div>
+<div id="Login">
+    <form method="post" action="Login">
+        <h1>Login</h1>
+        <p>@ViewBag.LoginError</p>
+        <p>Email<input name="Email" type="text"></p>
+        <p>Password<input name="Password" type="text"></p>
+        <p><input type="submit" value="Login"></p>
+    </form>
+</div>

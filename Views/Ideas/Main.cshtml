@@ -1,0 +1,21 @@
+@{
+    ViewData["Title"] = "Main";
+}
+<h1>Hi,@ViewBag.User.Name!</h1>
+<p><a href="/logout">logout</a></p>
+<form method="post" action="Ideacreate">
+    <p><textarea name="IdeaText" type="text"></textarea><input type="submit" value="Idea!"></p>
+</form>
+@if(ViewBag.Ideas.Count>0)
+{
+    foreach(var idea in ViewBag.Ideas)
+    {
+       <p><a href="/bright_ideas/users/@idea.user.UserId">@idea.user.Alias</a> says:<div class="ideas">@idea.IdeaText</div></p> 
+       <p><a href="/bright_ideas/like/@idea.IdeaId">Like</a> <a href="bright_ideas/@idea.IdeaId">@idea.subscribtions.Count people</a> like this
+       @if(idea.user.UserId==@ViewBag.User.UserId)
+       {
+           <a href="/bright_ideas/delete/@idea.IdeaId">Delete</a>
+       }
+       </p>
+    }
+}
